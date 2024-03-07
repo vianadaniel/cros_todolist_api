@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  postgres:
+        image: postgres:latest
+        ports:
+            - '5432:5432'
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: postgres
+        container_name: postgres
+        volumes:
+            - postgresdata:/var/lib/postgresql/data
+
+  api:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
+    command: npm run dev
+    depends_on:
+      - postgres
+
+volumes:
+  postgresdata:
