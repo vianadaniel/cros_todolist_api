@@ -21,6 +21,7 @@ export default class UserRepository implements IUserRepository {
     }
 
     public async getById(id: string): Promise<User | undefined> {
+        console.log(id);
         return this.userRepository.findOne(id);
     }
 
@@ -32,7 +33,10 @@ export default class UserRepository implements IUserRepository {
         return this.userRepository.find();
     }
 
-    public async update(id: string, userData: UserInterface): Promise<User | undefined> {
+    public async update(
+        id: string,
+        userData: UserInterface,
+    ): Promise<User | undefined> {
         const user = await this.userRepository.findOne(id);
 
         if (!user) {

@@ -4,6 +4,12 @@ import { UserInterface } from '../../../interfaces/user';
 
 
 export class FakeUserRepository implements IUserRepository {
+    login(email: string, password: string): Promise<string | null> {
+        throw new Error('Method not implemented.');
+    }
+    getByEmail(email: string): Promise<User | undefined> {
+        throw new Error('Method not implemented.');
+    }
     private users: User[] = [];
 
     public async createAndSave(userData: UserInterface): Promise<User> {

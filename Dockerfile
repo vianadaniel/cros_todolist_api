@@ -15,7 +15,6 @@ COPY . .
 
 ENV DB_HOST=postgres
 
-# Expose the port on which the NestJS server is running (optional)
 EXPOSE 3000
 
 # Command to start the application when the container is started

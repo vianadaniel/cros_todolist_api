@@ -2,7 +2,7 @@ import { Request, Response, Router } from 'express';
 
 import { swaggerSpec } from '../swagger';
 import user from './user.routes';
-
+import task from './task.routes';
 
 const router = Router();
 
@@ -15,6 +15,6 @@ router.get('/api-docs', (req: Request, res: Response) => {
 });
 
 router.use('/api/user', user);
-
+router.use('/api/task', task);
 
 export default router;

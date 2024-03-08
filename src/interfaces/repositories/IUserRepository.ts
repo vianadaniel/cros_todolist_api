@@ -1,5 +1,6 @@
 import User from '../../database/entities/User';
 import { UserInterface } from '../user';
+import { login } from '../../controllers/userController';
 
 export default interface IUserRepository {
     createAndSave(userData: UserInterface): Promise<User>;
