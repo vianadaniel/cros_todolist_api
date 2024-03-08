@@ -2,20 +2,25 @@
 
 GET http://localhost:3000/api/user
 Content-Type: application/json
-tenantid: ac5fed9e-9902-4aca-b955-f67e0057dde3
-username: teste
-useremail: test@asda.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0NDg0NzhhNy05MmRlLTQzNzQtYjg1MC00NTZhZjE3M2E2MGYiLCJpYXQiOjE3MDk4NTY2NzEsImV4cCI6MTcwOTg2MDI3MX0.pcl9nwP27j9jg4NhMfK9ShCzw2aflWSfK5eZnR-iB2k
 
 ### Create User
 
 POST http://localhost:3000/api/user
 Content-Type: application/json
-tenantid: ac5fed9e-9902-4aca-b955-f67e0057dde3
-username: teste
-useremail: test@asda.com
 
 {
     "name": "teste",
+    "email": "test@asda.com",
+    "password": "123456"
+}
+
+### Login User
+
+POST http://localhost:3000/api/user/login
+Content-Type: application/json
+
+{
     "email": "test@asda.com",
     "password": "123456"
 }

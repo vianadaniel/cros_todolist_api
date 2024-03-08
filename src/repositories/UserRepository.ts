@@ -10,6 +10,9 @@ export default class UserRepository implements IUserRepository {
     constructor() {
         this.userRepository = getRepository(User);
     }
+    getUserByEmail(email: string): Promise<User | undefined> {
+        throw new Error('Method not implemented.');
+    }
 
     public async createAndSave(userData: UserInterface): Promise<User> {
         const user = this.userRepository.create(userData);
@@ -19,6 +22,10 @@ export default class UserRepository implements IUserRepository {
 
     public async getById(id: string): Promise<User | undefined> {
         return this.userRepository.findOne(id);
+    }
+
+    public async getByEmail(email: string): Promise<User | undefined> {
+        return this.userRepository.findOne({ where: { email } });
     }
 
     public async getAll(): Promise<User[]> {

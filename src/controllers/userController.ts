@@ -13,7 +13,10 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
     return res.status(201).json(user);
 };
 
-export const getUserById = async (req: Request, res: Response): Promise<Response> => {
+export const getUserById = async (
+    req: Request,
+    res: Response,
+): Promise<Response> => {
     const { id } = req.params;
 
     const userService = container.resolve(UserService);
@@ -27,7 +30,10 @@ export const getUserById = async (req: Request, res: Response): Promise<Response
     return res.status(200).json(user);
 };
 
-export const getAllUsers = async (req: Request, res: Response): Promise<Response> => {
+export const getAllUsers = async (
+    req: Request,
+    res: Response,
+): Promise<Response> => {
     const userService = container.resolve(UserService);
 
     const users = await userService.getAllUsers();
@@ -62,4 +68,11 @@ export const deleteUser = async (req: Request, res: Response): Promise<Response>
     }
 
     return res.status(204).send();
+};
+
+export const login = async (req: Request, res: Response): Promise<Response> => {
+    const { email, password } = req.body;
+    const userService = container.resolve(UserService);
+    const user = await userService.login(email, password);
+    return res.status(200).json(user);
 };

@@ -1,5 +1,3 @@
-import { v4 as uuid } from 'uuid';
-
 import UserService from '../../services/UserService';
 import UserBuilder from '../testBuilders/UserBuilder';
 import { makeUserService } from './makeInstance/user';
@@ -38,9 +36,9 @@ describe('User Service', () => {
     it('should be able to find a User by id', async () => {
         const sut = await makeSut();
 
-        const userFinded = await userService.getUserById(sut.id);
+        const userFounded = await userService.getUserById(sut.id);
 
-        expect(userFinded!.id).toEqual(sut.id);
+        expect(userFounded!.id).toEqual(sut.id);
     });
 
     it('should return a User list', async () => {
