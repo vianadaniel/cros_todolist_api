@@ -35,42 +35,11 @@ router.post(
 
 /**
  * @swagger
- * /api/tasks/{id}:
+ * /api/tasks/{userId}:
  *   get:
  *     tags:
  *       - Tasks
- *     description: Get a task by ID
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *           format: int64
- *     responses:
- *       200:
- *         description: Task found
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/definitions/Task'
- *       404:
- *         description: Task not found
- */
-router.get(
-    '/:id',
-    TaskValidators.getTaskByIdValidator,
-    validate,
-    TaskController.getTaskById,
-);
-
-/**
- * @swagger
- * /api/tasks:
- *   get:
- *     tags:
- *       - Tasks
- *     description: Get all tasks
+ *     description: Get all tasks of User
  *     responses:
  *       200:
  *         description: Tasks found
@@ -81,7 +50,7 @@ router.get(
  *               items:
  *                 $ref: '#/definitions/Task'
  */
-router.get('/', TaskController.getAllTasks);
+router.get('/:id', TaskValidators.getTaskByIdValidator, TaskController.getAllTasks);
 
 /**
  * @swagger

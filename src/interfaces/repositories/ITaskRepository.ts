@@ -5,7 +5,7 @@ import { TaskInterface } from '../task';
 export default interface ITaskRepository {
     createAndSave(taskData: TaskInterface, user: User): Promise<Task>;
     getById(id: string): Promise<Task | undefined>;
-    getAll(): Promise<Task[]>;
+    getAllTaskByUserId(userId: string): Promise<Task[]>;
     update(id: string, taskData: TaskInterface): Promise<Task | undefined>;
     delete(id: string): Promise<boolean>;
     addSubtask(

@@ -27,7 +27,7 @@ Content-Type: application/json
 
 ### Create Task
 
-POST http://localhost:3000/api/task
+POST http://localhost:3000/api/task/
 Content-Type: application/json
 Authorization: Bearer <seu_token_jwt>
 
@@ -51,8 +51,18 @@ Authorization: Bearer <seu_token_jwt>
     "status": "pending"
 }
 
-### Get Task By ID
+### Get Task By User ID
 
-GET http://localhost:3000/api/task/12036ccc-bda9-469d-a0f7-d41ee4b02131
+GET http://localhost:3000/api/task/34e37838-09d8-4d6d-98e8-7cd2ea6e1d0e?status=completed
 Content-Type: application/json
 Authorization: Bearer <seu_token_jwt>
+
+### Put Task By User ID
+
+PUT http://localhost:3000/api/task/3fc11a49-7355-41c5-8490-4d4a94a493d4
+Content-Type: application/json
+Authorization: Bearer <seu_token_jwt>
+
+{
+    "status": "completed"
+}

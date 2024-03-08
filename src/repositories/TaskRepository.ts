@@ -13,6 +13,9 @@ export default class TaskRepository implements ITaskRepository {
     constructor() {
         this.taskRepository = getRepository(Task);
     }
+    getAll(): Promise<Task[]> {
+        throw new Error('Method not implemented.');
+    }
 
     public async createAndSave(taskData: TaskInterface, user: User): Promise<Task> {
         const task = this.taskRepository.create(taskData);
@@ -24,8 +27,20 @@ export default class TaskRepository implements ITaskRepository {
         return this.taskRepository.findOne(id);
     }
 
-    public async getAll(): Promise<Task[]> {
-        return this.taskRepository.find();
+    public async getAllTaskByUserId(
+        userId: string,
+        status?: string,
+    ): Promise<Task[]> {
+        let query = this.taskRepository
+            .createQueryBuilder('task')
+            .leftJoinAndSelect('task.subtasks', 'subtask')
+            .innerJoin('task.user', 'user', 'user.id = :userId', { userId });
+
+        if (status) {
+            query = query.where('task.status = :status', { status });
+        }
+
+        return query.getMany();
     }
 
     public async update(

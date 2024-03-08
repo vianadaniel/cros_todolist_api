@@ -68,13 +68,7 @@ router.post(
  *       401:
  *         description: Invalid credentials
  */
-router.post(
-    '/login',
-    UserValidators.loginValidator,
-    validate,
-    UserController.login,
-);
-
+router.post('/login', UserValidators.loginValidator, validate, UserController.login);
 
 /**
  * @swagger
@@ -123,11 +117,7 @@ router.get(
  *               items:
  *                 $ref: '#/definitions/User'
  */
-router.get(
-    '/',
-    verifyToken,
-    UserController.getAllUsers,
-);
+router.get('/', verifyToken, UserController.getAllUsers);
 
 /**
  * @swagger
@@ -162,7 +152,5 @@ router.put(
     validate,
     UserController.updateUser,
 );
-
-
 
 export default router;

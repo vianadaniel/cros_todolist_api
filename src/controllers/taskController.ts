@@ -34,8 +34,10 @@ export const getTaskById = async (req: Request, res: Response): Promise<void> =>
 
 export const getAllTasks = async (req: Request, res: Response): Promise<void> => {
     try {
+        const userId = req.params.id;
+        const status = req.query.status as string;
         const taskService = container.resolve(TaskService);
-        const tasks = await taskService.getAllTasks();
+        const tasks = await taskService.getAllTaskByUserId(userId, status);
         res.status(200).json(tasks);
     } catch (error) {
         console.error('Error getting all tasks:', error);

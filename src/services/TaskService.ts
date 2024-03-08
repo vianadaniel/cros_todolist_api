@@ -27,8 +27,11 @@ export default class TaskService {
         return this.taskRepository.getById(id);
     }
 
-    public async getAllTasks(): Promise<Task[]> {
-        return this.taskRepository.getAll();
+    public async getAllTaskByUserId(
+        userId: string,
+        status?: string,
+    ): Promise<Task[]> {
+        return this.taskRepository.getAllTaskByUserId(userId, status);
     }
 
     public async updateTask(

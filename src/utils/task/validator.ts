@@ -1,4 +1,4 @@
-import { body, param } from 'express-validator';
+import { body, param, query } from 'express-validator';
 
 export const createTaskValidator = [
     body('title').notEmpty().withMessage('Title is required'),
@@ -20,4 +20,5 @@ export const addSubtaskValidator = [
 
 export const getTaskByIdValidator = [
     param('id').isUUID().withMessage('Invalid task ID'),
+    query('status').optional(),
 ];
