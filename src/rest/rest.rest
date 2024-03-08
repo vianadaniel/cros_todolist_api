@@ -2,7 +2,7 @@
 
 GET http://localhost:3000/api/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlMjk4NjExMC00NzZlLTRhZjMtYTEyMi1lNjUxM2Y4MDU5MzYiLCJpYXQiOjE3MDk5MDM1MDEsImV4cCI6MTcwOTkwNzEwMX0.4fAf2-vIxZ5AqPH3CGxlP3LkBx3ntYEhg6PzCWL1WpI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNGUzNzgzOC0wOWQ4LTRkNmQtOThlOC03Y2QyZWE2ZTFkMGUiLCJpYXQiOjE3MDk5MjIxNTIsImV4cCI6MTcwOTkyNTc1Mn0.5PwYyNVAkcvWGeLcqHEt9MJsM-0-UURV5dGRVMraFbU
 
 ### Create User
 
@@ -32,7 +32,7 @@ Content-Type: application/json
 Authorization: Bearer <seu_token_jwt>
 
 {
-    "userId": "e2986110-476e-4af3-a122-e6513f805936",
+    "userId": "34e37838-09d8-4d6d-98e8-7cd2ea6e1d0e",
     "title": "Minha nova task",
     "description": "Descrição da task",
     "status": "pending"
@@ -40,7 +40,7 @@ Authorization: Bearer <seu_token_jwt>
 
 ### Create Task
 
-POST http://localhost:3000/api/task/12036ccc-bda9-469d-a0f7-d41ee4b02131/subtasks
+POST http://localhost:3000/api/task/9fd40cfa-cecf-47ca-94a7-08b868b35060/subtasks
 Content-Type: application/json
 Authorization: Bearer <seu_token_jwt>
 

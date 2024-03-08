@@ -9,19 +9,12 @@ import { HttpError } from '../utils/errors/HttpError';
 
 export default class TaskRepository implements ITaskRepository {
     private taskRepository: Repository<Task>;
-    private userRepository: Repository<User>;
 
     constructor() {
         this.taskRepository = getRepository(Task);
-        this.userRepository = getRepository(User);
     }
 
-    public async createAndSave(taskData: TaskInterface): Promise<Task> {
-        const user = await this.userRepository.findOne(taskData.userId);
-
-        if (!user) {
-            throw new HttpError(404, 'User not found');
-        }
+    public async createAndSave(taskData: TaskInterface, user: User): Promise<Task> {
         const task = this.taskRepository.create(taskData);
         task.user = user;
         return this.taskRepository.save(task);

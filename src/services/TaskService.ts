@@ -2,16 +2,25 @@ import { inject, injectable } from 'tsyringe';
 import TaskRepository from '../repositories/TaskRepository';
 import { TaskInterface } from '../interfaces/task';
 import { Task } from '../database/entities/Task';
+import UserRepository from '../repositories/UserRepository';
+import { HttpError } from '../utils/errors/HttpError';
 
 @injectable()
 export default class TaskService {
     constructor(
         @inject('TaskRepository')
         private taskRepository: TaskRepository,
+        @inject('UserRepository')
+        private userRepository: UserRepository,
     ) {}
 
     public async createTask(taskData: TaskInterface): Promise<Task> {
-        return this.taskRepository.createAndSave(taskData);
+        const user = await this.userRepository.getById(taskData.userId);
+
+        if (!user) {
+            throw new HttpError(404, 'User not found');
+        }
+        return this.taskRepository.createAndSave(taskData, user);
     }
 
     public async getTaskById(id: string): Promise<Task | undefined> {

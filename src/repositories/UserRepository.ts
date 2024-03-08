@@ -21,7 +21,6 @@ export default class UserRepository implements IUserRepository {
     }
 
     public async getById(id: string): Promise<User | undefined> {
-        console.log(id);
         return this.userRepository.findOne(id);
     }
 
