@@ -8,20 +8,23 @@ const router = Router();
 
 /**
  * @swagger
- * /api/users:
+ * /api/user:
  *   post:
  *     tags:
- *       - Users
- *     description: Create a new user
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/definitions/UserCreate'
+ *       - User
+ *     description: Create new user
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: user
+ *         description: JSON with user attributes.
+ *         in: body
+ *         required: true
+ *         schema:
+ *            $ref: '#/definitions/UserCreate'
  *     responses:
  *       201:
- *         description: User created successfully
+ *         description: Successful
  *         content:
  *           application/json:
  *             schema:
@@ -36,10 +39,10 @@ router.post(
 
 /**
  * @swagger
- * /api/users/login:
+ * /api/user/login:
  *   post:
  *     tags:
- *       - Users
+ *       - User
  *     description: Login user
  *     requestBody:
  *       required: true
@@ -72,10 +75,10 @@ router.post('/login', UserValidators.loginValidator, validate, UserController.lo
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/user/{id}:
  *   get:
  *     tags:
- *       - Users
+ *       - User
  *     description: Get a user by ID
  *     parameters:
  *       - in: path
@@ -102,14 +105,14 @@ router.get(
 
 /**
  * @swagger
- * /api/users:
+ * /api/user:
  *   get:
  *     tags:
- *       - Users
- *     description: Get all users
+ *       - User
+ *     description: Get all user
  *     responses:
  *       200:
- *         description: Users found
+ *         description: User found
  *         content:
  *           application/json:
  *             schema:
@@ -121,10 +124,10 @@ router.get('/', verifyToken, UserController.getAllUsers);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/user/{id}:
  *   put:
  *     tags:
- *       - Users
+ *       - User
  *     description: Update a user by ID
  *     parameters:
  *       - in: path

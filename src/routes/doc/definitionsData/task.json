@@ -19,17 +19,17 @@
                 "description": "Task Status"
             },
             "user": {
-                "$ref": "#/components/schemas/User",
+                "$ref": "#/definitions/User",
                 "description": "User assigned to the task"
             },
             "parentTask": {
-                "$ref": "#/components/schemas/Task",
+                "$ref": "#/definitions/Task",
                 "description": "Parent task (if this task is a subtask)"
             },
             "subtasks": {
                 "type": "array",
                 "items": {
-                    "$ref": "#/components/schemas/Task"
+                    "$ref": "#/definitions/Task"
                 },
                 "description": "Subtasks of this task"
             }

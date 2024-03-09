@@ -14,8 +14,8 @@ const options = {
     swaggerDefinition,
     apis: [
         './dist/routes/index.js',
-        './dist/routes/nfse.routes.js',
-        './dist/routes/header.routes.js',
+        './dist/routes/user.routes.js',
+        './dist/routes/task.routes.js',
     ],
 } as Options;
 
