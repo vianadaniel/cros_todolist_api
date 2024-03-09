@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import TaskService from '../services/TaskService';
-import { TaskInterface } from '../interfaces/task';
+import { TaskCreateInterface, TaskUpdateInterface } from '../interfaces/task';
 
 export const createTask = async (req: Request, res: Response): Promise<void> => {
     try {
-        const taskData: TaskInterface = req.body;
+        const taskData: TaskCreateInterface = req.body;
         const taskService = container.resolve(TaskService);
         const task = await taskService.createTask(taskData);
         res.status(201).json(task);
@@ -48,7 +48,7 @@ export const getAllTasks = async (req: Request, res: Response): Promise<void> =>
 export const updateTask = async (req: Request, res: Response): Promise<void> => {
     try {
         const taskId = req.params.id;
-        const taskData: TaskInterface = req.body;
+        const taskData: TaskUpdateInterface = req.body;
         const taskService = container.resolve(TaskService);
         const updatedTask = await taskService.updateTask(taskId, taskData);
         if (!updatedTask) {
@@ -81,7 +81,7 @@ export const deleteTask = async (req: Request, res: Response): Promise<void> => 
 export const addSubtask = async (req: Request, res: Response): Promise<void> => {
     try {
         const parentId = req.params.id;
-        const subtaskData: TaskInterface = req.body;
+        const subtaskData: TaskCreateInterface = req.body;
         const taskService = container.resolve(TaskService);
         const subtask = await taskService.addSubtask(parentId, subtaskData);
         if (!subtask) {

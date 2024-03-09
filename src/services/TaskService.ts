@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import TaskRepository from '../repositories/TaskRepository';
-import { TaskCreateInterface } from '../interfaces/task';
+import { TaskCreateInterface, TaskUpdateInterface } from '../interfaces/task';
 import { Task } from '../database/entities/Task';
 import UserRepository from '../repositories/UserRepository';
 import { HttpError } from '../utils/errors/HttpError';
@@ -36,7 +36,7 @@ export default class TaskService {
 
     public async updateTask(
         id: string,
-        taskData: TaskCreateInterface,
+        taskData: TaskUpdateInterface,
     ): Promise<Task | undefined> {
         return this.taskRepository.update(id, taskData);
     }
