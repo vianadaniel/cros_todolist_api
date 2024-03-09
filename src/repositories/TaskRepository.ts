@@ -4,8 +4,7 @@ import { EntityRepository, getRepository, Repository } from 'typeorm';
 import { Task } from '../database/entities/Task';
 import { TaskInterface } from '../interfaces/task';
 import ITaskRepository from '../interfaces/repositories/ITaskRepository';
-import User from '../database/entities/User';
-import { HttpError } from '../utils/errors/HttpError';
+import { UserInterface } from '../interfaces/user';
 
 @EntityRepository(Task)
 export default class TaskRepository implements ITaskRepository {
@@ -18,8 +17,11 @@ export default class TaskRepository implements ITaskRepository {
         throw new Error('Method not implemented.');
     }
 
-    public async createAndSave(taskData: TaskInterface, user: User): Promise<Task> {
-        const task = this.taskRepository.create(taskData);
+    public async createAndSave(
+        taskData: TaskInterface,
+        user: UserInterface,
+    ): Promise<Task> {
+        const task = this.taskRepository.create(taskData) as TaskInterface;
         task.user = user;
         return this.taskRepository.save(task);
     }
@@ -78,6 +80,7 @@ export default class TaskRepository implements ITaskRepository {
         }
 
         const subtask = this.taskRepository.create({ ...subtaskData, parentTask });
+        subtask.user = parentTask.user;
         return this.taskRepository.save(subtask);
     }
 }

@@ -29,10 +29,6 @@ afterAll(async () => {
     }
 });
 
-beforeAll(async () => {
-    await connection.query('DELETE FROM user');
-});
-
 describe('UserRepository', () => {
     test('createAndSave - SUCCESS', async () => {
         const user = new UserBuilder()

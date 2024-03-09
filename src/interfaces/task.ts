@@ -1,9 +1,10 @@
+import { UserInterface } from './user';
+
 export interface TaskInterface {
-    id: string;
     title: string;
     description?: string;
     status: string;
     parentTask?: TaskInterface;
-    userId: string;
+    user?: UserInterface;
     subtasks?: TaskInterface[];
 }
