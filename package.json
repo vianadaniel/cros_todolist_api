@@ -11,6 +11,7 @@
         "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
         "m:run": "npm run typeorm migration:run",
         "m:generate": "npm run typeorm migration:generate -- -n",
+        "m:create": "npm run typeorm migration:create -- -n",
         "clean-database": "npm run typeorm schema:drop && npm run typeorm migration:run",
         "copy:doc": "cp -r ./src/routes/doc/definitionsData ./dist/routes/doc/"
     },
@@ -49,6 +50,7 @@
         "pre-push": "^0.1.1",
         "prettier": "^2.1.2",
         "sinon": "^9.2.0",
+        "sqlite3": "^5.1.7",
         "supertest": "^5.0.0",
         "ts-jest": "^26.1.2",
         "ts-node": "^10.9.2",

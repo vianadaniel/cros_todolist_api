@@ -2,7 +2,7 @@
 
 GET http://localhost:3000/api/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNGUzNzgzOC0wOWQ4LTRkNmQtOThlOC03Y2QyZWE2ZTFkMGUiLCJpYXQiOjE3MDk5MjIxNTIsImV4cCI6MTcwOTkyNTc1Mn0.5PwYyNVAkcvWGeLcqHEt9MJsM-0-UURV5dGRVMraFbU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNGUzNzgzOC0wOWQ4LTRkNmQtOThlOC03Y2QyZWE2ZTFkMGUiLCJpYXQiOjE3MTAwMDIxNDIsImV4cCI6MTcxMDAwNTc0Mn0.sMnVXTwxOhovGvKTOFPVNzYCaruZ-SqDSL9OucdgG2k
 
 ### Create User
 
@@ -40,7 +40,7 @@ Authorization: Bearer <seu_token_jwt>
 
 ### Create Task
 
-POST http://localhost:3000/api/task/9fd40cfa-cecf-47ca-94a7-08b868b35060/subtasks
+POST http://localhost:3000/api/task/03a138cc-7469-4260-b727-1a02baeaa927/subtasks
 Content-Type: application/json
 Authorization: Bearer <seu_token_jwt>
 
@@ -53,7 +53,7 @@ Authorization: Bearer <seu_token_jwt>
 
 ### Get Task By User ID
 
-GET http://localhost:3000/api/task/34e37838-09d8-4d6d-98e8-7cd2ea6e1d0e?status=completed
+GET http://localhost:3000/api/task/34e37838-09d8-4d6d-98e8-7cd2ea6e1d0e
 Content-Type: application/json
 Authorization: Bearer <seu_token_jwt>
 

@@ -1,17 +1,15 @@
 /* eslint-disable no-param-reassign */
-import { getRepository, Repository } from 'typeorm';
+import { EntityRepository, getRepository, Repository } from 'typeorm';
 import User from '../database/entities/User';
 import IUserRepository from '../interfaces/repositories/IUserRepository';
-import { UserInterface } from '../interfaces/user';
+import { UserInterface, UserUpdateInterface } from '../interfaces/user';
 
+@EntityRepository(User)
 export default class UserRepository implements IUserRepository {
     private userRepository: Repository<User>;
 
     constructor() {
         this.userRepository = getRepository(User);
-    }
-    getUserByEmail(email: string): Promise<User | undefined> {
-        throw new Error('Method not implemented.');
     }
 
     public async createAndSave(userData: UserInterface): Promise<User> {
@@ -34,7 +32,7 @@ export default class UserRepository implements IUserRepository {
 
     public async update(
         id: string,
-        userData: UserInterface,
+        userData: UserUpdateInterface,
     ): Promise<User | undefined> {
         const user = await this.userRepository.findOne(id);
 

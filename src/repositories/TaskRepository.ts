@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { getRepository, Repository } from 'typeorm';
+import { EntityRepository, getRepository, Repository } from 'typeorm';
 
 import { Task } from '../database/entities/Task';
 import { TaskInterface } from '../interfaces/task';
@@ -7,6 +7,7 @@ import ITaskRepository from '../interfaces/repositories/ITaskRepository';
 import User from '../database/entities/User';
 import { HttpError } from '../utils/errors/HttpError';
 
+@EntityRepository(Task)
 export default class TaskRepository implements ITaskRepository {
     private taskRepository: Repository<Task>;
 

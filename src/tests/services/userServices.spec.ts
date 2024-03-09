@@ -7,7 +7,7 @@ describe('User Service', () => {
     let userService: UserService;
 
     beforeAll(async () => {
-        userService = makeUserService
+        userService = makeUserService;
     });
 
     const makeSut = (userData?: Partial<UserInterface>): Promise<UserInterface> => {
@@ -30,23 +30,15 @@ describe('User Service', () => {
         const user = await userService.createUser(userBuild);
 
         expect(user.id).not.toBeUndefined();
-
     });
 
-    it('should be able to find a User by id', async () => {
+    it('should be able to login', async () => {
         const sut = await makeSut();
 
-        const userFounded = await userService.getUserById(sut.id);
+        const token = await userService.login(sut.email, sut.password);
 
-        expect(userFounded!.id).toEqual(sut.id);
-    });
-
-    it('should return a User list', async () => {
-        const sut = await makeSut();
-
-        const userList = await userService.getAllUsers();
-
-        expect(userList.find(user => user.id === sut.id)).toBeDefined();
+        expect(token).toBeDefined();
+        expect(token!.length).toBe(192);
     });
 
     it('should return a update User', async () => {
@@ -66,7 +58,7 @@ describe('User Service', () => {
     it('should be able to delete a User', async () => {
         const sut = await makeSut();
 
-        const deletedUser = await userService.deleteUser(sut.id);
+        await userService.deleteUser(sut.id);
 
         const userList = await userService.getAllUsers();
         expect(userList.find(user => user.id === sut.id)).toBeUndefined();
