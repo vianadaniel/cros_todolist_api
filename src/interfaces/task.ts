@@ -5,6 +5,7 @@ export interface TaskInterface {
     description?: string;
     status: string;
     parentTask?: TaskInterface;
+    userId?: string;
     user?: UserInterface;
     subtasks?: TaskInterface[];
 }
