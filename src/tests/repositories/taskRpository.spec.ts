@@ -50,6 +50,7 @@ describe('TaskRepository', () => {
             title: 'Task 1',
             description: 'Description 1',
             status: 'pending',
+            userId: user.id,
         };
 
         const task = await taskRepository.createAndSave(taskData, user);
@@ -67,11 +68,13 @@ describe('TaskRepository', () => {
             title: 'Task 1',
             description: 'Description 1',
             status: 'pending',
+            userId: user.id,
         };
         const taskData2 = {
             title: 'Task 2',
             description: 'Description 2',
             status: 'pending',
+            userId: user.id,
         };
         const task1 = await taskRepository.createAndSave(taskData1, user);
         const task2 = await taskRepository.createAndSave(taskData2, user);
@@ -88,6 +91,7 @@ describe('TaskRepository', () => {
             title: 'Task 3',
             description: 'Description 3',
             status: 'pending',
+            userId: user.id,
         };
         const task = await taskRepository.createAndSave(taskData, user);
 
@@ -95,6 +99,7 @@ describe('TaskRepository', () => {
             title: 'Updated Task',
             description: 'Updated Description',
             status: 'completed',
+            userId: user.id,
         };
         const updatedTask = await taskRepository.update(task.id, updatedTaskData);
 
@@ -109,6 +114,7 @@ describe('TaskRepository', () => {
             title: 'Task 4',
             description: 'Description 4',
             status: 'pending',
+            userId: user.id,
         };
         const task = await taskRepository.createAndSave(taskData, user);
 
@@ -126,6 +132,7 @@ describe('TaskRepository', () => {
             title: 'Task 5',
             description: 'Description 5',
             status: 'pending',
+            userId: user.id,
         };
         const task = await taskRepository.createAndSave(taskData, user);
 
@@ -133,6 +140,7 @@ describe('TaskRepository', () => {
             title: 'Subtask 1',
             description: 'Subtask Description 1',
             status: 'pending',
+            userId: user.id,
         };
         const subtask = await taskRepository.addSubtask(task.id, subtaskData);
 
