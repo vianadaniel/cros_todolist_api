@@ -2,10 +2,10 @@ import { createConnection, getConnection, Connection } from 'typeorm';
 import TaskRepository from '../../repositories/TaskRepository';
 import { Task } from '../../database/entities/Task';
 import User from '../../database/entities/User';
-import { TaskInterface } from '../../interfaces/task';
+import { TaskCreateInterface } from '../../interfaces/task';
 import UserBuilder from '../testBuilders/UserBuilder';
 import { v4 as uuid } from 'uuid';
-import { UserInterface } from '../../interfaces/user';
+
 import UserRepository from '../../repositories/UserRepository';
 
 describe('TaskRepository', () => {
@@ -19,7 +19,7 @@ describe('TaskRepository', () => {
         .withEmail('test@example.com')
         .withPassword('password')
         .withId(uuid())
-        .build() as UserInterface;
+        .build() as User;
 
     beforeAll(async () => {
         try {
@@ -46,7 +46,7 @@ describe('TaskRepository', () => {
     });
 
     it('should create and save a task', async () => {
-        const taskData: TaskInterface = {
+        const taskData: TaskCreateInterface = {
             title: 'Task 1',
             description: 'Description 1',
             status: 'pending',
@@ -87,7 +87,7 @@ describe('TaskRepository', () => {
     });
 
     it('should update a task', async () => {
-        const taskData: TaskInterface = {
+        const taskData: TaskCreateInterface = {
             title: 'Task 3',
             description: 'Description 3',
             status: 'pending',
@@ -95,7 +95,7 @@ describe('TaskRepository', () => {
         };
         const task = await taskRepository.createAndSave(taskData, user);
 
-        const updatedTaskData: TaskInterface = {
+        const updatedTaskData: TaskCreateInterface = {
             title: 'Updated Task',
             description: 'Updated Description',
             status: 'completed',
@@ -110,7 +110,7 @@ describe('TaskRepository', () => {
     });
 
     it('should delete a task', async () => {
-        const taskData: TaskInterface = {
+        const taskData: TaskCreateInterface = {
             title: 'Task 4',
             description: 'Description 4',
             status: 'pending',
@@ -128,7 +128,7 @@ describe('TaskRepository', () => {
     });
 
     it('should add a subtask to a task', async () => {
-        const taskData: TaskInterface = {
+        const taskData: TaskCreateInterface = {
             title: 'Task 5',
             description: 'Description 5',
             status: 'pending',
@@ -136,7 +136,7 @@ describe('TaskRepository', () => {
         };
         const task = await taskRepository.createAndSave(taskData, user);
 
-        const subtaskData: TaskInterface = {
+        const subtaskData: TaskCreateInterface = {
             title: 'Subtask 1',
             description: 'Subtask Description 1',
             status: 'pending',

@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import TaskRepository from '../repositories/TaskRepository';
-import { TaskInterface } from '../interfaces/task';
+import { TaskCreateInterface } from '../interfaces/task';
 import { Task } from '../database/entities/Task';
 import UserRepository from '../repositories/UserRepository';
 import { HttpError } from '../utils/errors/HttpError';
@@ -14,7 +14,7 @@ export default class TaskService {
         private userRepository: UserRepository,
     ) {}
 
-    public async createTask(taskData: TaskInterface): Promise<Task> {
+    public async createTask(taskData: TaskCreateInterface): Promise<Task> {
         const user = await this.userRepository.getById(taskData.userId);
 
         if (!user) {
@@ -36,7 +36,7 @@ export default class TaskService {
 
     public async updateTask(
         id: string,
-        taskData: TaskInterface,
+        taskData: TaskCreateInterface,
     ): Promise<Task | undefined> {
         return this.taskRepository.update(id, taskData);
     }
@@ -47,7 +47,7 @@ export default class TaskService {
 
     public async addSubtask(
         parentId: string,
-        subtaskData: TaskInterface,
+        subtaskData: TaskCreateInterface,
     ): Promise<Task | undefined> {
         return this.taskRepository.addSubtask(parentId, subtaskData);
     }

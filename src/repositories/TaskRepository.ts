@@ -2,9 +2,9 @@
 import { EntityRepository, getRepository, Repository } from 'typeorm';
 
 import { Task } from '../database/entities/Task';
-import { TaskInterface } from '../interfaces/task';
+import { TaskCreateInterface, TaskUpdateInterface } from '../interfaces/task';
 import ITaskRepository from '../interfaces/repositories/ITaskRepository';
-import { UserInterface } from '../interfaces/user';
+import User from '../database/entities/User';
 
 @EntityRepository(Task)
 export default class TaskRepository implements ITaskRepository {
@@ -18,10 +18,10 @@ export default class TaskRepository implements ITaskRepository {
     }
 
     public async createAndSave(
-        taskData: TaskInterface,
-        user: UserInterface,
+        taskData: TaskCreateInterface,
+        user: User,
     ): Promise<Task> {
-        const task = this.taskRepository.create(taskData) as TaskInterface;
+        const task = this.taskRepository.create(taskData);
         task.user = user;
         return this.taskRepository.save(task);
     }
@@ -48,7 +48,7 @@ export default class TaskRepository implements ITaskRepository {
 
     public async update(
         id: string,
-        taskData: TaskInterface,
+        taskData: TaskUpdateInterface,
     ): Promise<Task | undefined> {
         const task = await this.taskRepository.findOne(id);
 
@@ -71,7 +71,7 @@ export default class TaskRepository implements ITaskRepository {
 
     public async addSubtask(
         parentId: string,
-        subtaskData: TaskInterface,
+        subtaskData: TaskCreateInterface,
     ): Promise<Task | undefined> {
         const parentTask = await this.taskRepository.findOne(parentId);
 
