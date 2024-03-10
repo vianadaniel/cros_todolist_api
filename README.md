@@ -82,6 +82,8 @@ npm run dev
 
 ```
 
+Debugger mode: Just press F5
+
 ## With Docker
 
 ```bash
