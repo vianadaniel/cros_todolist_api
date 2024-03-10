@@ -1,13 +1,16 @@
 import UserService from '../../services/UserService';
 import UserBuilder from '../testBuilders/UserBuilder';
-import { makeUserService } from './makeInstance/user';
+
 import { UserInterface } from '../../interfaces/user';
+import FakeUserRepository from '../repositories/fakes/UserRepository';
 
 describe('User Service', () => {
+    let userRepository: FakeUserRepository;
     let userService: UserService;
 
-    beforeAll(async () => {
-        userService = makeUserService;
+    beforeEach(() => {
+        userRepository = new FakeUserRepository();
+        userService = new UserService(<any>userRepository);
     });
 
     const makeSut = (userData?: Partial<UserInterface>): Promise<UserInterface> => {

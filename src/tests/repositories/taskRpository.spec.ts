@@ -47,12 +47,12 @@ describe('TaskRepository', () => {
     });
 
     it('should create and save a task', async () => {
-        const taskData: TaskCreateInterface = {
-            title: 'Task 1',
-            description: 'Description 1',
-            status: 'pending',
-            userId: user.id,
-        };
+        const taskData: TaskCreateInterface = new TaskBuilder()
+            .withTitle('Task 1')
+            .withDescription('Description 1')
+            .withStatus('pending')
+            .withUserId(user.id)
+            .build();
 
         const task = await taskRepository.createAndSave(taskData, user);
 

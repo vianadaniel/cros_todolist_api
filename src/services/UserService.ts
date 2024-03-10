@@ -41,10 +41,7 @@ export default class UserService {
     public async login(email: string, password: string): Promise<string | null> {
         try {
             const user = await this.userRepository.getByEmail(email);
-            // if (!user || user.password !== password) {
-            //     return null;
-            // }
-            if (!user) {
+            if (!user || user.password !== password) {
                 return null;
             }
 

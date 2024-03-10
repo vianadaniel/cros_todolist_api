@@ -3,12 +3,13 @@ import IUserRepository from '../../../interfaces/repositories/IUserRepository';
 import { UserInterface } from '../../../interfaces/user';
 import { v4 as uuid } from 'uuid';
 
-export class FakeUserRepository implements IUserRepository {
+export default class FakeUserRepository implements IUserRepository {
     private users: User[] = [];
 
     public async createAndSave(userData: UserInterface): Promise<User> {
         const user = { ...userData, id: uuid() } as User;
         this.users.push(user);
+
         return user;
     }
 

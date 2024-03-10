@@ -13,9 +13,6 @@ export default class TaskRepository implements ITaskRepository {
     constructor() {
         this.taskRepository = getRepository(Task);
     }
-    getAll(): Promise<Task[]> {
-        throw new Error('Method not implemented.');
-    }
 
     public async createAndSave(
         taskData: TaskCreateInterface,
