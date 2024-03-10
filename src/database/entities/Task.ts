@@ -19,7 +19,7 @@ export class Task {
     description: string;
 
     @Column()
-    status: string;
+    status: 'completed' | 'pending';
 
     @ManyToOne(() => User, user => user.tasks)
     user: User;

@@ -29,7 +29,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/api/task/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAwNzk0MzMsImV4cCI6MTcxMDA4MzAzM30.6x-Ap4rHHGEVRw9ItsZRvfrlJyJJ_NeixoSF1e1I9kw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAxMDU0MDgsImV4cCI6MTcxMDEwOTAwOH0.mF3tRb0aHtc-pru16M4BGxt85sGwPbDOOkcWV-8k3mM
 
 {
     "userId": "80b06ca0-dc90-4753-ba28-6aede75ea11a",

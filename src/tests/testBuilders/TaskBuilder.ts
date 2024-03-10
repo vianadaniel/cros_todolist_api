@@ -28,7 +28,7 @@ export default class TaskBuilder {
         return this;
     }
 
-    public withStatus(status: string): TaskBuilder {
+    public withStatus(status: 'completed' | 'pending'): TaskBuilder {
         this.task.status = status;
         return this;
     }
