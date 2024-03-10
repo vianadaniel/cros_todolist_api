@@ -101,8 +101,8 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { email, password } = req.body;
         const userService = container.resolve(UserService);
-        const user = await userService.login(email, password);
-        return res.status(200).json(user);
+        const token = await userService.login(email, password);
+        return res.status(200).json(token);
     } catch (error) {
         return res.status(500).json({ message: 'Internal server error' });
     }
