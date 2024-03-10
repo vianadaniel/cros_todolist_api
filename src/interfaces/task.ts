@@ -10,3 +10,11 @@ export interface TaskUpdateInterface {
     description?: string;
     status?: string;
 }
+
+export interface TaskInterface {
+    title: string;
+    description?: string;
+    status: string;
+    userId: string;
+    id: string;
+}

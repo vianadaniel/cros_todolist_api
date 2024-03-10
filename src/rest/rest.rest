@@ -2,7 +2,7 @@
 
 GET http://localhost:3000/api/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNGUzNzgzOC0wOWQ4LTRkNmQtOThlOC03Y2QyZWE2ZTFkMGUiLCJpYXQiOjE3MTAwMDIxNDIsImV4cCI6MTcxMDAwNTc0Mn0.sMnVXTwxOhovGvKTOFPVNzYCaruZ-SqDSL9OucdgG2k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAwNzk0MzMsImV4cCI6MTcxMDA4MzAzM30.6x-Ap4rHHGEVRw9ItsZRvfrlJyJJ_NeixoSF1e1I9kw
 
 ### Create User
 
@@ -29,16 +29,16 @@ Content-Type: application/json
 
 POST http://localhost:3000/api/task/
 Content-Type: application/json
-Authorization: Bearer <seu_token_jwt>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAwNzk0MzMsImV4cCI6MTcxMDA4MzAzM30.6x-Ap4rHHGEVRw9ItsZRvfrlJyJJ_NeixoSF1e1I9kw
 
 {
-    "userId": "34e37838-09d8-4d6d-98e8-7cd2ea6e1d0e",
+    "userId": "80b06ca0-dc90-4753-ba28-6aede75ea11a",
     "title": "Minha nova task",
     "description": "Descrição da task",
     "status": "pending"
 }
 
-### Create Task
+### Create SubTask
 
 POST http://localhost:3000/api/task/03a138cc-7469-4260-b727-1a02baeaa927/subtasks
 Content-Type: application/json
@@ -53,15 +53,15 @@ Authorization: Bearer <seu_token_jwt>
 
 ### Get Task By User ID
 
-GET http://localhost:3000/api/task/34e37838-09d8-4d6d-98e8-7cd2ea6e1d0e
+GET http://localhost:3000/api/task/80b06ca0-dc90-4753-ba28-6aede75ea11a
 Content-Type: application/json
 Authorization: Bearer <seu_token_jwt>
 
 ### Put Task By User ID
 
-PUT http://localhost:3000/api/task/3fc11a49-7355-41c5-8490-4d4a94a493d4
+PUT http://localhost:3000/api/task/0d710ce5-255a-4364-9246-f34d17d249a0
 Content-Type: application/json
-Authorization: Bearer <seu_token_jwt>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAwNzk0MzMsImV4cCI6MTcxMDA4MzAzM30.6x-Ap4rHHGEVRw9ItsZRvfrlJyJJ_NeixoSF1e1I9kw
 
 {
     "status": "completed"

@@ -2,6 +2,7 @@ import { Router } from 'express';
 import * as TaskController from '../controllers/taskController';
 import * as TaskValidators from '../utils/task/validator';
 import { validate } from '../middlewares/validationMiddleware';
+import verifyToken from '../middlewares/verifyToken';
 
 const router = Router();
 
@@ -28,6 +29,7 @@ const router = Router();
  */
 router.post(
     '/',
+    verifyToken,
     TaskValidators.createTaskValidator,
     validate,
     TaskController.createTask,

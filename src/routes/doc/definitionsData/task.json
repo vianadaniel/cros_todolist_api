@@ -38,7 +38,8 @@
     "TaskCreate": {
         "required": [
             "title",
-            "status"
+            "status",
+            "userId"
         ],
         "properties": {
             "title": {

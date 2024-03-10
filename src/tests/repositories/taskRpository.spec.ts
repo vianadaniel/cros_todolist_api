@@ -7,6 +7,7 @@ import UserBuilder from '../testBuilders/UserBuilder';
 import { v4 as uuid } from 'uuid';
 
 import UserRepository from '../../repositories/UserRepository';
+import TaskBuilder from '../testBuilders/TaskBuilder';
 
 describe('TaskRepository', () => {
     let connection: Connection;
@@ -64,18 +65,20 @@ describe('TaskRepository', () => {
     });
 
     it('should get all tasks by user id', async () => {
-        const taskData1 = {
-            title: 'Task 1',
-            description: 'Description 1',
-            status: 'pending',
-            userId: user.id,
-        };
-        const taskData2 = {
-            title: 'Task 2',
-            description: 'Description 2',
-            status: 'pending',
-            userId: user.id,
-        };
+        const taskData1: TaskCreateInterface = new TaskBuilder()
+            .withTitle('Task 1')
+            .withDescription('Description 1')
+            .withStatus('pending')
+            .withUserId(user.id)
+            .build();
+
+        const taskData2: TaskCreateInterface = new TaskBuilder()
+            .withTitle('Task 2')
+            .withDescription('Description 2')
+            .withStatus('pending')
+            .withUserId(user.id)
+            .build();
+
         const task1 = await taskRepository.createAndSave(taskData1, user);
         const task2 = await taskRepository.createAndSave(taskData2, user);
 
@@ -87,20 +90,20 @@ describe('TaskRepository', () => {
     });
 
     it('should update a task', async () => {
-        const taskData: TaskCreateInterface = {
-            title: 'Task 3',
-            description: 'Description 3',
-            status: 'pending',
-            userId: user.id,
-        };
+        const taskData: TaskCreateInterface = new TaskBuilder()
+            .withTitle('Task 3')
+            .withDescription('Task Description 3')
+            .withStatus('pending')
+            .build();
+
         const task = await taskRepository.createAndSave(taskData, user);
 
-        const updatedTaskData: TaskCreateInterface = {
-            title: 'Updated Task',
-            description: 'Updated Description',
-            status: 'completed',
-            userId: user.id,
-        };
+        const updatedTaskData: TaskCreateInterface = new TaskBuilder()
+            .withTitle('Updated Task')
+            .withDescription('Updated Description')
+            .withStatus('completed')
+            .build();
+
         const updatedTask = await taskRepository.update(task.id, updatedTaskData);
 
         expect(updatedTask).toBeDefined();
@@ -110,12 +113,13 @@ describe('TaskRepository', () => {
     });
 
     it('should delete a task', async () => {
-        const taskData: TaskCreateInterface = {
-            title: 'Task 4',
-            description: 'Description 4',
-            status: 'pending',
-            userId: user.id,
-        };
+        const taskData: TaskCreateInterface = new TaskBuilder()
+            .withTitle('Task 4')
+            .withDescription('Description 4')
+            .withStatus('pending')
+            .withUserId(user.id)
+            .build();
+
         const task = await taskRepository.createAndSave(taskData, user);
 
         const result = await taskRepository.delete(task.id);
@@ -128,22 +132,28 @@ describe('TaskRepository', () => {
     });
 
     it('should add a subtask to a task', async () => {
-        const taskData: TaskCreateInterface = {
-            title: 'Task 5',
-            description: 'Description 5',
-            status: 'pending',
-            userId: user.id,
-        };
+        const taskData: TaskCreateInterface = new TaskBuilder()
+            .withTitle('Task 5')
+            .withDescription('Description 5')
+            .withStatus('pending')
+            .withUserId(user.id)
+            .build();
+
         const task = await taskRepository.createAndSave(taskData, user);
 
-        const subtaskData: TaskCreateInterface = {
-            title: 'Subtask 1',
-            description: 'Subtask Description 1',
-            status: 'pending',
-            userId: user.id,
-        };
+        const subtaskData: TaskCreateInterface = new TaskBuilder()
+            .withTitle('Subtask 1')
+            .withDescription('Subtask Description 1')
+            .withStatus('pending')
+            .withUserId(user.id)
+            .build();
+
         const subtask = await taskRepository.addSubtask(task.id, subtaskData);
 
         expect(subtask).toBeDefined();
+        expect(subtask!.id).toBeDefined();
+        expect(subtask!.title).toBe('Subtask 1');
+        expect(subtask!.description).toBe('Subtask Description 1');
+        expect(subtask!.status).toBe('pending');
     });
 });

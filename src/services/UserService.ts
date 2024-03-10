@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
-import  User  from '../database/entities/User';
+import User from '../database/entities/User';
 import IUserRepository from '../interfaces/repositories/IUserRepository';
-import { UserInterface } from '../interfaces/user';
+import { UserCreateInterface, UserInterface } from '../interfaces/user';
 import jwt from 'jsonwebtoken';
 
 @injectable()
@@ -11,8 +11,12 @@ export default class UserService {
         private userRepository: IUserRepository,
     ) {}
 
-    public async createUser(userData: UserInterface): Promise<User> {
+    public async createUser(userData: UserCreateInterface): Promise<User> {
         return this.userRepository.createAndSave(userData);
+    }
+
+    public async getByEmail(email: string): Promise<User | undefined> {
+        return this.userRepository.getByEmail(email);
     }
 
     public async getUserById(id: string): Promise<User | undefined> {
@@ -23,7 +27,10 @@ export default class UserService {
         return this.userRepository.getAll();
     }
 
-    public async updateUser(id: string, userData: UserInterface): Promise<User | undefined> {
+    public async updateUser(
+        id: string,
+        userData: UserInterface,
+    ): Promise<User | undefined> {
         return this.userRepository.update(id, userData);
     }
 
@@ -37,11 +44,13 @@ export default class UserService {
             // if (!user || user.password !== password) {
             //     return null;
             // }
-             if (!user) {
+            if (!user) {
                 return null;
             }
 
-            const token = jwt.sign({ userId: user.id }, 'your_secret_key_here', { expiresIn: '1h' });
+            const token = jwt.sign({ userId: user.id }, 'your_secret_key_here', {
+                expiresIn: '1h',
+            });
 
             return token;
         } catch (error) {

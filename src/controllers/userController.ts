@@ -9,6 +9,13 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
 
         const userService = container.resolve(UserService);
 
+        const existingUser = await userService.getByEmail(userData.email);
+        if (existingUser) {
+            return res
+                .status(400)
+                .json({ message: 'User with this email already exists' });
+        }
+
         const user = await userService.createUser(userData);
 
         return res.status(201).json(user);

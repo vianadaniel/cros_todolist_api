@@ -1,8 +1,8 @@
 import User from '../../database/entities/User';
-import { UserInterface, UserUpdateInterface } from '../user';
+import { UserCreateInterface, UserInterface, UserUpdateInterface } from '../user';
 
 export default interface IUserRepository {
-    createAndSave(userData: UserInterface): Promise<User>;
+    createAndSave(userData: UserCreateInterface): Promise<User>;
     getById(id: string): Promise<User | undefined>;
     getByEmail(email: string): Promise<User | undefined>;
     getAll(): Promise<User[]>;

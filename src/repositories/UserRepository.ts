@@ -2,7 +2,11 @@
 import { EntityRepository, getRepository, Repository } from 'typeorm';
 import User from '../database/entities/User';
 import IUserRepository from '../interfaces/repositories/IUserRepository';
-import { UserInterface, UserUpdateInterface } from '../interfaces/user';
+import {
+    UserCreateInterface,
+    UserInterface,
+    UserUpdateInterface,
+} from '../interfaces/user';
 
 @EntityRepository(User)
 export default class UserRepository implements IUserRepository {
@@ -12,7 +16,7 @@ export default class UserRepository implements IUserRepository {
         this.userRepository = getRepository(User);
     }
 
-    public async createAndSave(userData: UserInterface): Promise<User> {
+    public async createAndSave(userData: UserCreateInterface): Promise<User> {
         const user = this.userRepository.create(userData);
 
         return this.userRepository.save(user);

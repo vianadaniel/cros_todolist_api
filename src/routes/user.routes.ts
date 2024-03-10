@@ -120,7 +120,7 @@ router.get(
  *               items:
  *                 $ref: '#/definitions/User'
  */
-router.get('/', verifyToken, UserController.getAllUsers);
+router.get('/', UserController.getAllUsers);
 
 /**
  * @swagger
@@ -151,6 +151,7 @@ router.get('/', verifyToken, UserController.getAllUsers);
  */
 router.put(
     '/:id',
+    verifyToken,
     UserValidators.updateUserValidator,
     validate,
     UserController.updateUser,
