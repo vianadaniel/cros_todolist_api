@@ -17,6 +17,7 @@ export default class FakeTaskRepository implements ITaskRepository {
             userId: user.id,
         } as unknown as Task;
         this.tasks.push(task);
+
         return task;
     }
 
@@ -59,6 +60,7 @@ export default class FakeTaskRepository implements ITaskRepository {
         subtaskData: TaskCreateInterface,
     ): Promise<Task | undefined> {
         const task = this.tasks.find(task => task.id === parentId);
+
         if (task) {
             const subtask = {
                 ...subtaskData,
@@ -66,6 +68,7 @@ export default class FakeTaskRepository implements ITaskRepository {
                 parentTask: task.id,
             } as unknown as Task;
             this.tasks.push(subtask);
+
             return subtask as Task;
         }
         return undefined;
