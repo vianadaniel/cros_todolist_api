@@ -97,7 +97,7 @@ describe('Task Service', () => {
         expect(task).toBe(false);
     });
 
-    it('should be able to delete task by id', async () => {
+    it('should be able to get all tasks user by id filter by status', async () => {
         const taskData = new TaskBuilder()
             .withTitle('Task 1')
             .withDescription('Description 1')
