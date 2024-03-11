@@ -27,19 +27,19 @@
 ### Business Rules:
 
 -   The API must have the following functionalities:
--   The user can create an account in the application. X
--   The user can log in to the application. X
--   The user can add a task to the to-do list. X
--   The user can list all their tasks. X
--   The user can edit a specific task. X
--   The user can delete a specific task. X
--   The user can mark a specific task as completed. X
--   The user can unmark a specific task as completed. X
--   The user can filter their tasks by status (completed or not completed). X
--   A task can have subtasks. X
--   A subtask can also have subtasks. X
--   The user must have an id, name, email, and password. X
--   A task must have an id, a title, an optional description, and a status. X
+-   The user can create an account in the application.
+-   The user can log in to the application.
+-   The user can add a task to the to-do list.
+-   The user can list all their tasks.
+-   The user can edit a specific task.
+-   The user can delete a specific task.
+-   The user can mark a specific task as completed.
+-   The user can unmark a specific task as completed.
+-   The user can filter their tasks by status (completed or not completed).
+-   A task can have subtasks.
+-   A subtask can also have subtasks.
+-   The user must have an id, name, email, and password.
+-   A task must have an id, a title, an optional description, and a status.
 
 ### Requirements:
 
@@ -90,3 +90,89 @@ Debugger mode: Just press F5
 make up
 
 ```
+
+### Routes
+
+-   **GET** `/api/user`
+
+    -   Description: Get all users
+    -   Authorization: Required
+
+-   **POST** `/api/user` --- The user can create an account in the application.
+
+    -   Description: Create a new user
+    -   Authorization: Not required
+    -   Request body:
+        ```json
+        {
+            "name": "Your Name",
+            "email": "your_email@example.com",
+            "password": "your_password"
+        }
+        ```
+
+-   **POST** `/api/user/login` ---The user can log in to the application.
+
+    -   Description: Login user
+    -   Authorization: Not required
+    -   Request body:
+        ```json
+        {
+            "email": "your_email@example.com",
+            "password": "your_password"
+        }
+        ```
+
+-   **POST** `/api/task/` --- The user can add a task to the to-do list.
+
+    -   Description: Create a new task
+    -   Authorization: Required
+    -   Request body:
+        ```json
+        {
+            "userId": "user_id_here",
+            "title": "Task title",
+            "description": "Task description",
+            "status": "pending"
+        }
+        ```
+
+-   **POST** `/api/task/:id/subtasks` --- A task can have subtasks.
+
+    -   Description: Create a new subtask for a task
+    -   Authorization: Required
+    -   Request body:
+        ```json
+        {
+            "userId": "user_id_here",
+            "title": "Subtask title",
+            "description": "Subtask description",
+            "status": "pending"
+        }
+        ```
+
+-   **GET** `/api/task/:userId?status=:status` --- The user can list all their tasks. Filter By Status
+
+    -   Description: Get all tasks for a user
+    -   Authorization: Required
+    -   Params:
+        -   userId: ID of the user
+
+-   **PUT** `/api/task/:id` The user can edit a specific task. It can be used to set Status
+
+    -   Description: Update a task
+    -   Authorization: Required
+    -   Params:
+        -   id: ID of the task to update
+    -   Request body:
+        ```json
+        {
+            "status": "completed"
+        }
+        ```
+
+-   **DELETE** `/api/task/:id` --- The user can delete a specific task
+    -   Description: Delete a task
+    -   Authorization: Required
+    -   Params:
+        -   id: ID of the task to delete

@@ -29,7 +29,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/api/task/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAxMDU0MDgsImV4cCI6MTcxMDEwOTAwOH0.mF3tRb0aHtc-pru16M4BGxt85sGwPbDOOkcWV-8k3mM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAxNTQzNjQsImV4cCI6MTcxMDE1Nzk2NH0.oWL842ldXJQZDGvglNOt8CJIzv3baeb2jFklr3qG58w
 
 {
     "userId": "80b06ca0-dc90-4753-ba28-6aede75ea11a",
@@ -53,16 +53,22 @@ Authorization: Bearer <seu_token_jwt>
 
 ### Get Task By User ID
 
-GET http://localhost:3000/api/task/80b06ca0-dc90-4753-ba28-6aede75ea11a
+GET http://localhost:3000/api/task/80b06ca0-dc90-4753-ba28-6aede75ea11a?status=pending
 Content-Type: application/json
-Authorization: Bearer <seu_token_jwt>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAxNTQzNjQsImV4cCI6MTcxMDE1Nzk2NH0.oWL842ldXJQZDGvglNOt8CJIzv3baeb2jFklr3qG58w
 
 ### Put Task By User ID
 
-PUT http://localhost:3000/api/task/0d710ce5-255a-4364-9246-f34d17d249a0
+PUT http://localhost:3000/api/task/57ba8875-17ee-449a-be78-2b3192f8f65b
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAwNzk0MzMsImV4cCI6MTcxMDA4MzAzM30.6x-Ap4rHHGEVRw9ItsZRvfrlJyJJ_NeixoSF1e1I9kw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAxNTQzNjQsImV4cCI6MTcxMDE1Nzk2NH0.oWL842ldXJQZDGvglNOt8CJIzv3baeb2jFklr3qG58w
 
 {
     "status": "completed"
 }
+
+### Delete Task By ID
+
+DELETE  http://localhost:3000/api/task/57ba8875-17ee-449a-be78-2b3192f8f65b
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAxNTQzNjQsImV4cCI6MTcxMDE1Nzk2NH0.oWL842ldXJQZDGvglNOt8CJIzv3baeb2jFklr3qG58w

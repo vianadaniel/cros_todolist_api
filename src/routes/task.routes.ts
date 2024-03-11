@@ -13,6 +13,8 @@ const router = Router();
  *     tags:
  *       - Tasks
  *     description: Create a new task
+ *     security:
+ *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -42,6 +44,8 @@ router.post(
  *     tags:
  *       - Tasks
  *     description: Get all tasks of User
+ *     security:
+ *       - BearerAuth: []
  *     responses:
  *       200:
  *         description: Tasks found
@@ -52,7 +56,12 @@ router.post(
  *               items:
  *                 $ref: '#/definitions/Task'
  */
-router.get('/:id', TaskValidators.getTaskByIdValidator, TaskController.getAllTasks);
+router.get(
+    '/:id',
+    verifyToken,
+    TaskValidators.getTaskByIdValidator,
+    TaskController.getAllTasks,
+);
 
 /**
  * @swagger
@@ -61,6 +70,8 @@ router.get('/:id', TaskValidators.getTaskByIdValidator, TaskController.getAllTas
  *     tags:
  *       - Tasks
  *     description: Update a task by ID
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -84,6 +95,7 @@ router.get('/:id', TaskValidators.getTaskByIdValidator, TaskController.getAllTas
  */
 router.put(
     '/:id',
+    verifyToken,
     TaskValidators.updateTaskValidator,
     validate,
     TaskController.updateTask,
@@ -96,6 +108,8 @@ router.put(
  *     tags:
  *       - Tasks
  *     description: Add a subtask to a task
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -119,6 +133,7 @@ router.put(
  */
 router.post(
     '/:id/subtasks',
+    verifyToken,
     TaskValidators.addSubtaskValidator,
     validate,
     TaskController.addSubtask,
@@ -131,6 +146,8 @@ router.post(
  *     tags:
  *       - Tasks
  *     description: Delete a task by ID
+ *     security:
+ *       - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -146,6 +163,7 @@ router.post(
  */
 router.delete(
     '/:id',
+    verifyToken,
     TaskValidators.getTaskByIdValidator,
     validate,
     TaskController.deleteTask,

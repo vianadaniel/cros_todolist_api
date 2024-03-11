@@ -8,6 +8,13 @@ const swaggerDefinition = {
     },
     host: process.env.HOST || 'localhost:3000',
     basePath: '/',
+    securityDefinitions: {
+        BearerAuth: {
+            type: 'apiKey',
+            name: 'Authorization',
+            in: 'header',
+        },
+    },
 } as SwaggerDefinition;
 
 const options = {
