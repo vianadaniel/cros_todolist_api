@@ -16,7 +16,10 @@ describe('task routes', () => {
     });
     it('should create a new task', async () => {
         const userId = '80b06ca0-dc90-4753-ba28-6aede75ea11a';
-        const token = sign({ userId }, 'your_secret_key_here');
+        const token = sign(
+            { userId },
+            process.env.JWT_SECRET || 'your_secret_key_here',
+        );
 
         const taskData = {
             userId,
@@ -41,7 +44,10 @@ describe('task routes', () => {
 
     it('should get all tasks by userId', async () => {
         const userId = '80b06ca0-dc90-4753-ba28-6aede75ea11a';
-        const token = sign({ userId }, 'your_secret_key_here');
+        const token = sign(
+            { userId },
+            process.env.JWT_SECRET || 'your_secret_key_here',
+        );
 
         const tasksData = [
             {
@@ -92,7 +98,10 @@ describe('task routes', () => {
     it('should update a task', async () => {
         const userId = '80b06ca0-dc90-4753-ba28-6aede75ea11a';
         const taskId = '57ba8875-17ee-449a-be78-2b3192f8f65b';
-        const token = sign({ userId }, 'your_secret_key_here');
+        const token = sign(
+            { userId },
+            process.env.JWT_SECRET || 'your_secret_key_here',
+        );
 
         const updatedTaskData = {
             title: 'Minha tarefa atualizada',

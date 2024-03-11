@@ -9,7 +9,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
         return res.status(401).json({ error: 'Token is missing.' });
     }
 
-    verify(token, 'your_secret_key_here', (err: any) => {
+    verify(token, process.env.JWT_SECRET || 'your_secret_key_here', (err: any) => {
         if (err) {
             return res.status(401).json({ error: 'Invalid token.' });
         }

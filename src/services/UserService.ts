@@ -45,9 +45,13 @@ export default class UserService {
                 return null;
             }
 
-            const token = jwt.sign({ userId: user.id }, 'your_secret_key_here', {
-                expiresIn: '1h',
-            });
+            const token = jwt.sign(
+                { userId: user.id },
+                process.env.JWT_SECRET || 'your_secret_key_here',
+                {
+                    expiresIn: '1h',
+                },
+            );
 
             return token;
         } catch (error) {
