@@ -46,6 +46,18 @@ router.post(
  *     description: Get all tasks of User
  *     security:
  *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [completed, pending]
+ *         description: Filter tasks by status (completed or pending)
  *     responses:
  *       200:
  *         description: Tasks found
