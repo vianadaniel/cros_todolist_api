@@ -84,7 +84,7 @@ npm run dev
 
 Debugger mode: Just press F5
 
-Use the extensions REST Client for Visual Studio Code
+Use the extension REST Client for Visual Studio Code
 src/rest/rest.rest to make requests
 
 ## With Docker
