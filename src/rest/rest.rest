@@ -1,8 +1,20 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAyODUwNTQsImV4cCI6MTcxMDI4ODY1NH0.cELnpzJv1J45bpzT72pZJDlmVF4rJo0VEmjt5D9hBpU
+
+### Login User
+
+POST http://localhost:3000/api/user/login
+Content-Type: application/json
+
+{
+    "email": "test@asda.com",
+    "password": "123456"
+}
+
 ### Get Users
 
 GET http://localhost:3000/api/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAwNzk0MzMsImV4cCI6MTcxMDA4MzAzM30.6x-Ap4rHHGEVRw9ItsZRvfrlJyJJ_NeixoSF1e1I9kw
+Authorization: Bearer Bearer {{token}}
 
 ### Create User
 
@@ -29,7 +41,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/api/task/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAxNTgzMzgsImV4cCI6MTcxMDE2MTkzOH0.D9Std0rPGswqMDf-8w1_ZRBrmO29gK_w8-AuuN_P-Rk
+Authorization: Bearer {{token}}
 
 {
     "userId": "80b06ca0-dc90-4753-ba28-6aede75ea11a",
@@ -40,9 +52,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwN
 
 ### Create SubTask
 
-POST http://localhost:3000/api/task/03a138cc-7469-4260-b727-1a02baeaa927/subtasks
+POST http://localhost:3000/api/task/96d0e111-15a2-4d98-9cc7-2ba58e552f85/subtasks
 Content-Type: application/json
-Authorization: Bearer <seu_token_jwt>
+Authorization: Bearer {{token}}
 
 {
     "userId": "34e37838-09d8-4d6d-98e8-7cd2ea6e1d0e",
@@ -55,13 +67,13 @@ Authorization: Bearer <seu_token_jwt>
 
 GET http://localhost:3000/api/task/80b06ca0-dc90-4753-ba28-6aede75ea11a?status=pending
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAxNTQzNjQsImV4cCI6MTcxMDE1Nzk2NH0.oWL842ldXJQZDGvglNOt8CJIzv3baeb2jFklr3qG58w
+Authorization: Bearer {{token}}
 
 ### Put Task By User ID
 
 PUT http://localhost:3000/api/task/57ba8875-17ee-449a-be78-2b3192f8f65b
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAxNTQzNjQsImV4cCI6MTcxMDE1Nzk2NH0.oWL842ldXJQZDGvglNOt8CJIzv3baeb2jFklr3qG58w
+Authorization: Bearer {{token}}
 
 {
     "status": "completed"
@@ -71,4 +83,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwN
 
 DELETE  http://localhost:3000/api/task/57ba8875-17ee-449a-be78-2b3192f8f65b
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4MGIwNmNhMC1kYzkwLTQ3NTMtYmEyOC02YWVkZTc1ZWExMWEiLCJpYXQiOjE3MTAxNTQzNjQsImV4cCI6MTcxMDE1Nzk2NH0.oWL842ldXJQZDGvglNOt8CJIzv3baeb2jFklr3qG58w
+Authorization: Bearer {{token}}
