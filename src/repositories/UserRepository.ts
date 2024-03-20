@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { EntityRepository, getRepository, Repository } from 'typeorm';
 import User from '../database/entities/User';
 import IUserRepository from '../interfaces/repositories/IUserRepository';

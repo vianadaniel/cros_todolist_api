@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { inject, injectable } from 'tsyringe';
+import jwt from 'jsonwebtoken';
 import User from '../database/entities/User';
 import IUserRepository from '../interfaces/repositories/IUserRepository';
 import { UserCreateInterface, UserInterface } from '../interfaces/user';
-import jwt from 'jsonwebtoken';
 
 @injectable()
 export default class UserService {

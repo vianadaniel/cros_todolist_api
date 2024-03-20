@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { inject, injectable } from 'tsyringe';
 import TaskRepository from '../repositories/TaskRepository';
 import { TaskCreateInterface, TaskUpdateInterface } from '../interfaces/task';
