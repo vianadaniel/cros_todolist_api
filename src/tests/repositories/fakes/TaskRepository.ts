@@ -1,10 +1,8 @@
 import { v4 as uuid } from 'uuid';
-
 import ITaskRepository from '../../../interfaces/repositories/ITaskRepository';
 import { TaskCreateInterface, TaskInterface } from '../../../interfaces/task';
 import { Task } from '../../../database/entities/Task';
 import User from '../../../database/entities/User';
-import TaskRepository from '../../../repositories/TaskRepository';
 
 export default class FakeTaskRepository implements ITaskRepository {
     private tasks: Task[] = [];

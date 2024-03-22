@@ -1,10 +1,10 @@
 import request from 'supertest';
+import { container } from 'tsyringe';
+import sinon from 'sinon';
 import app from '../../app';
 import UserService from '../../services/UserService';
-import sinon from 'sinon';
 import UserBuilder from '../testBuilders/UserBuilder';
 import User from '../../database/entities/User';
-import { container } from 'tsyringe';
 
 describe('User routes', () => {
     let userServiceSpy: sinon.SinonStubbedInstance<UserService>;

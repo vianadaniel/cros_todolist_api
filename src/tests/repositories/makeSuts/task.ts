@@ -1,6 +1,4 @@
-import { v4 as uuid } from 'uuid';
 import { TaskInterface } from '../../../interfaces/task';
-
 import TaskRepository from '../../../repositories/TaskRepository';
 import TaskBuilder from '../../testBuilders/TaskBuilder';
 import { Task } from '../../../database/entities/Task';

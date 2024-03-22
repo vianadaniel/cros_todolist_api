@@ -1,7 +1,7 @@
+import { v4 as uuid } from 'uuid';
 import User from '../../../database/entities/User';
 import IUserRepository from '../../../interfaces/repositories/IUserRepository';
 import { UserInterface } from '../../../interfaces/user';
-import { v4 as uuid } from 'uuid';
 
 export default class FakeUserRepository implements IUserRepository {
     private users: User[] = [];

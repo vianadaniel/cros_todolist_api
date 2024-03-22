@@ -1,5 +1,5 @@
 import User from '../../database/entities/User';
-import { UserCreateInterface, UserInterface, UserUpdateInterface } from '../user';
+import { UserCreateInterface, UserUpdateInterface } from '../user';
 
 export default interface IUserRepository {
     createAndSave(userData: UserCreateInterface): Promise<User>;

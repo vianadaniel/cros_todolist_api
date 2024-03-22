@@ -1,11 +1,9 @@
 import request from 'supertest';
+import { sign } from 'jsonwebtoken';
+import sinon from 'sinon';
+import { container } from 'tsyringe';
 import app from '../../app';
 import TaskService from '../../services/TaskService';
-import sinon from 'sinon';
-
-import { container } from 'tsyringe';
-
-import { sign } from 'jsonwebtoken';
 
 describe('task routes', () => {
     let taskServiceSpy: sinon.SinonStubbedInstance<TaskService>;

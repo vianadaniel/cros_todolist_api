@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-param-reassign */
 import { EntityRepository, getRepository, Repository } from 'typeorm';
-
 import { Task } from '../database/entities/Task';
 import { TaskCreateInterface, TaskUpdateInterface } from '../interfaces/task';
 import ITaskRepository from '../interfaces/repositories/ITaskRepository';

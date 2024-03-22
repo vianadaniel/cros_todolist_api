@@ -1,4 +1,3 @@
-import User from '../../database/entities/User';
 import { TaskInterface } from '../../interfaces/task';
 
 export default class TaskBuilder {

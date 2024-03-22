@@ -1,10 +1,10 @@
-import { createConnection, getConnection, Connection } from 'typeorm';
+import { createConnection, Connection } from 'typeorm';
+import { v4 as uuid } from 'uuid';
 import TaskRepository from '../../repositories/TaskRepository';
 import { Task } from '../../database/entities/Task';
 import User from '../../database/entities/User';
 import { TaskCreateInterface } from '../../interfaces/task';
 import UserBuilder from '../testBuilders/UserBuilder';
-import { v4 as uuid } from 'uuid';
 
 import UserRepository from '../../repositories/UserRepository';
 import TaskBuilder from '../testBuilders/TaskBuilder';
